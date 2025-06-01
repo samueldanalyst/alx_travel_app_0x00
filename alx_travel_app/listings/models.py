@@ -15,7 +15,7 @@ class Listing(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        self.title
+        return self.title
 
 class Booking(models.Model):
     booking_id = models.AutoField(primary_key=True)
@@ -29,7 +29,7 @@ class Booking(models.Model):
 class Review(models.Model):
     review_id = models.AutoField(primary_key=True)
     listing = models.ForeignKey(Listing, models.CASCADE)
-    booking = models.ForeignKey(Booking, on_delete=True)
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
     created_at = models.DateField(auto_now=True)
     comment = models.TextField()
     review_rating = models.IntegerField()
